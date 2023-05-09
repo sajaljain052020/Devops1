@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <assignments>
+        <name>Default</name>
+        <label>Default</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Street_Adress__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not Know</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Default_Updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>MP_Assign</name>
+        <label>MP Assign</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Street_Adress__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Default</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>MP_Updated</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Hotel_State</name>
+        <label>Hotel State</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Default</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Hotel_States</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.State__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Madhya Pradesh</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MP_Assign</targetReference>
+            </connector>
+            <label>Hotel States</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Practice flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Practice flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Default_Updated</name>
+        <label>Default Updated</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <inputAssignments>
+            <field>Street_Adress__c</field>
+            <value>
+                <stringValue>Default Street Updated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>MP_Updated</name>
+        <label>MP Updated</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <inputAssignments>
+            <field>Street_Adress__c</field>
+            <value>
+                <stringValue>Mp street</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Hotel_State</targetReference>
+        </connector>
+        <object>Hotel__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

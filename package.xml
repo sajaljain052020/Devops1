@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <type>
+        <members>ass7</members>
+        <members>Assignment_10_email_phone</members>
+        <members>Ass8</members>
+        <members>Assignment_1</members>
+        <members>Assignment_4</members>
+        <members>Assignment_2</members>
+        <members>Assignment_3</members>
+        <members>auto_opp</members>
+        <name>Flow</name>
+    </type>
+     <type>
+        <members>Opportunity.Billing_City__c</members>
+        <members>Opportunity.Billing_Country__c</members>
+        <members>Account.Account_Manager__c</members>
+        <name>Custom Field</name>
+    </type>
+     <type>
+        <members>Account-Account Layout</members>
+        <members>Opportunity-Opportunity Layout</members>
+        <name>Page Layout</name>
+    </type>
+</xml>
